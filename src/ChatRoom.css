@@ -1,0 +1,71 @@
+.chatroom-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* .chatroom-header {
+    background-color: #001529;
+    color: white;
+    padding: 15px;
+    text-align: center;
+  }
+   */
+
+/*   .chatroom-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #001529;
+    color: white;
+    padding: 15px;
+  }
+  
+  .chatroom-header button {
+    margin-right: 10px;
+  }
+*/
+.chatroom-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    background-color: #f0f2f5;
+}
+
+.chatroom-footer {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #d9d9d9;
+    background-color: white;
+}
+
+.chat-item.user {
+    /* text-align: right; */
+    text-align: left;
+}
+
+.chat-item.system {
+    text-align: left;
+}
+
+.chatroom-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* 左右分佈 */
+    background-color: #001529;
+    color: white;
+    padding: 15px;
+}
+
+.chatroom-header h1 {
+    flex: 1;
+    text-align: center;
+    /* 標題居中 */
+    margin: 0;
+}
+
+.back-button {
+    flex-shrink: 0;
+    /* 確保按鈕不被壓縮 */
+}
