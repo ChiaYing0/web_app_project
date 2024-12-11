@@ -44,7 +44,7 @@ const ChatBubble = ({ message, isUser, timestamp }) => {
         </div>
       </div>
       {/* 按鈕群組 */}
-      <div className="absolute -bottom-5 left-4 flex justify-end space-x-2">
+      <div className="absolute -bottom-4 left-4 flex justify-end space-x-2">
         <ChatBubbleButton text={"Copy Text"} icon={<FaRegCopy/>}/>
         <ChatBubbleButton text={"Regenerated Response"} icon={<HiArrowUturnRight/>} />
         <ChatBubbleButton text={"Copy Link"} icon={<IoMdLink/>} />
