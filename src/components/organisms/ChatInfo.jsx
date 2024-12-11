@@ -3,11 +3,11 @@ import ChatInfoSearchBar from "../molecules/searching/ChatInfoSearchBar";
 
 const ChatInfo = () => {
   return (
-    <div className="bg-white rounded-xl shadow-xl space-y-4 overflow-hidden">
+    <div className="relative bg-white rounded-xl shadow-xl space-y-4 overflow-hidden h-full flex flex-col">
       {/* Header */}
       <div className="sticky z-30 justify-between items-center border-b py-4 p-5 top-0 bg-white flex">
         <h2 className="text-sm font-black text-gray-800 tracking-tight">
-          Chat Room Name
+          Chat Information
         </h2>
         <span className="bg-red-500 text-white text-xxs rounded-full px-2 py-1">
           15
@@ -15,11 +15,11 @@ const ChatInfo = () => {
       </div>
 
       {/* Search Bar */}
-      <div className="w-4/5 mx-auto">
+      <div className="w-4/5 mx-auto flex-none">
         <ChatInfoSearchBar />
       </div>
       {/* Chat Group Items */}
-      <div className="space-y-4 px-6">
+      <div className="space-y-4 px-6 overflow-y-auto flex-1">
         {/* Chat Group Example */}
         <ChatInfoItem
           title="Audio Generate"
@@ -41,8 +41,9 @@ const ChatInfo = () => {
               />
             </svg>,
           ]}
+          content="FUNNN"
         />
-        {/* <ChatGroupItem
+        <ChatInfoItem
           title="Audio Generate"
           message="Design thinking is a problem-solving approach....."
           time="Just now"
@@ -63,12 +64,12 @@ const ChatInfo = () => {
             </svg>,
           ]}
         />
-        <ChatGroupItem
+        <ChatInfoItem
           title="E-Commerce Website Code"
           message="Design thinking is a problem-solving approach....."
           time="2 Min ago"
         />
-        <ChatGroupItem
+        <ChatInfoItem
           title="Design Thinking"
           message="Design thinking is a problem-solving approach....."
           time="1 Hr ago"
@@ -78,7 +79,7 @@ const ChatInfo = () => {
             "https://via.placeholder.com/40",
           ]}
         />
-        <ChatGroupItem
+        <ChatInfoItem
           title="E-Commerce Website Code"
           message="Design thinking is a problem-solving approach....."
           time="Yesterday"
@@ -87,11 +88,21 @@ const ChatInfo = () => {
             "https://via.placeholder.com/40",
             "https://via.placeholder.com/40",
           ]}
-        /> */}
+        />
+        <ChatInfoItem
+          title="E-Commerce Website Code"
+          message="Design thinking is a problem-solving approach....."
+          time="Yesterday"
+          images={[
+            "https://via.placeholder.com/40",
+            "https://via.placeholder.com/40",
+            "https://via.placeholder.com/40",
+          ]}
+        />
       </div>
 
       {/* Add New Group Button */}
-      <button className="w-full bg-red-500 text-white rounded-lg py-2 font-semibold text-sm hover:bg-red-600">
+      <button className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-red-500 text-white font-semibold text-sm py-3 px-8 rounded-lg shadow-lg backdrop-blur-md bg-opacity-80 hover:bg-red-600">
         Add New Group
       </button>
     </div>
