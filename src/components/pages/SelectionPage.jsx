@@ -1,66 +1,50 @@
 import { useState } from "react";
-import SelectionUI from "./SelectionUI";
-import { Flex, Button } from "antd";
 import { useNavigate } from "react-router-dom";
+import { RiChatVoiceAiFill } from "react-icons/ri";
+import { Select } from "antd";
+import { accent_options, scenario_options } from "../../models/chat";
 
-const accent_options = [
-  { value: "日本" },
-  { value: "越南" },
-  { value: "法國" },
-  { value: "印度" },
-  { value: "澳洲" },
-];
-
-const scenario_options = [
-  { value: "旅遊" },
-  { value: "面試" },
-  { value: "日常" },
-];
-
-function SelectionPage() {
-  const [accent, setAccent] = useState("choose");
-  const [scenario, setScenario] = useState("choose");
+const SelectionPage = () => {
+  const [accent, setAccent] = useState("");
+  const [scenario, setScenario] = useState("");
 
   const navigate = useNavigate();
 
   const handleOnClick = () => {
-    // should jump to chatroom
-    console.log("should jump to chatroom");
-    navigate("/chatroom")
+    if (accent === "" || scenario === "") {
+      return alert("Please select the accent and scenario.");
+    }
+    navigate("/chatroom", { state: { accent, scenario } });
   };
 
   return (
-    <div className="App">
-      <div className="Setting">
-        <Flex gap="middle" vertical>
-          <h1 className="Logo">Tutor</h1>
-
-          <Flex gap="middle" horizontal>
-            <SelectionUI
-              title={"語調"}
-              default_value={accent}
-              options={accent_options}
-              handleChange={setAccent}
-            ></SelectionUI>
-
-            <SelectionUI
-              title={"情境"}
-              default_value={scenario}
-              options={scenario_options}
-              handleChange={setScenario}
-            ></SelectionUI>
-          </Flex>
-
-          <Button type="primary" onClick={handleOnClick}>
-            確定
-          </Button>
-        </Flex>
+    <div className="flex h-screen">
+      <div className="w-1/2 bg-gray-800 text-white flex flex-col items-center justify-center">
+        <RiChatVoiceAiFill className="text-[10vw] mb-4" />
+        <p className="text-4xl font-semibold">FluentBuddy</p>
       </div>
-
-      {/* <h1>{accent}</h1>
-      <h1>{scenario}</h1> */}
+      <div className="w-1/2 bg-gray-300 flex flex-col items-center justify-center">
+        <Select
+          className="w-96 h-12 mb-4"
+          placeholder="Select a accent"
+          onChange={setAccent}
+          options={accent_options}
+        />
+        <Select
+          className="w-96 h-12 mb-12"
+          placeholder="Select a scenario"
+          onChange={setScenario}
+          options={scenario_options}
+        />
+        <button
+          className="w-96 h-12 border border-gray-400 text-gray-400 rounded-md bg-gray-300 hover:text-gray-500 hover:bg-gray-200"
+          onClick={handleOnClick}
+        >
+          Start the chat
+        </button>
+      </div>
     </div>
   );
-}
+};
 
 export default SelectionPage;

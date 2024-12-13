@@ -7,12 +7,12 @@ import { FaFileUpload } from "react-icons/fa";
 import { SlCalender } from "react-icons/sl";
 import { FiSend } from "react-icons/fi";
 
-const ChatInput = ({ onSendMessage }) => {
+const ChatInput = ({ onSendMessage, onSendAudio }) => {
   const [inputValue, setInputValue] = useState("");
 
   // 使用錄音 Hook
-  const { isRecording, audioURL, startRecording, stopRecording } =
-    useMicrophoneRecorder();
+  const { isRecording, startRecording, stopRecording } =
+    useMicrophoneRecorder(onSendAudio);
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
@@ -41,9 +41,9 @@ const ChatInput = ({ onSendMessage }) => {
     <div className="flex flex-col items-center bg-gray-100 pb-2 rounded-lg shadow-md mt-3">
       {/* 上方按鈕組 */}
       <div className="flex justify-start gap-2 w-full mb-2 p-2 pl-4 bg-[#D5DAE7] rounded-t-lg">
-        <ChatInputButton content={<SlCalender />} tooltip="Prompt"/>
+        <ChatInputButton content={<SlCalender />} tooltip="Prompt" />
         <ChatInputButton content={<FaRegBookmark />} />
-        <ChatInputButton content={<FaFileUpload />} tooltip="Upload File"/>
+        <ChatInputButton content={<FaFileUpload />} tooltip="Upload File" />
       </div>
 
       {/* 下方輸入區 */}

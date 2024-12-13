@@ -8,6 +8,9 @@ import { FaRegCopy } from "react-icons/fa";
 import { HiArrowUturnRight } from "react-icons/hi2";
 import { IoMdLink } from "react-icons/io";
 import { IoShareSocialOutline } from "react-icons/io5";
+import { RiChatVoiceAiFill } from "react-icons/ri";
+import { FaUserAlt } from "react-icons/fa";
+
 
 const ChatBubble = forwardRef(({ message, isUser, timestamp }, ref) => {
   return (
@@ -17,16 +20,22 @@ const ChatBubble = forwardRef(({ message, isUser, timestamp }, ref) => {
         isUser ? "self-end bg-[#FCE8E7]" : "self-start bg-[#D5DAE7]"
       } relative flex gap-4 rounded-lg shadow-md p-4 w-4/5 text-xs`}
     >
-      <div className="h-12 w-12 bg-gray-200 rounded-full"></div>
+      <div className="h-12 w-12 bg-white rounded-full flex items-center justify-center flex-shrink-0">
+        {isUser ? (
+          <FaUserAlt className="text-[16px]" />
+        ) : (
+          <RiChatVoiceAiFill className="text-[16px]" />
+        )}
+      </div>
       <div className="flex flex-col gap-6 justify-start">
         <div className="flex justify-between">
           <div className="flex gap-3">
-            <div className="">
+            {/* <div className="">
               <RxSpeakerLoud className="text-lg" />
             </div>
             <div className="">
               <FaRegHeart className="text-lg" />
-            </div>
+            </div> */}
           </div>
           {/* 時間戳，靠右對齊 */}
           <div className="text-gray-500 text-xs text-right">{timestamp}</div>
@@ -36,18 +45,18 @@ const ChatBubble = forwardRef(({ message, isUser, timestamp }, ref) => {
         {!isUser && (
           <div className="flex justify-between">
             <div className="flex gap-3">
-              <div>
+              {/* <div>
                 <FaRegThumbsUp className="text-lg" />
               </div>
               <div>
                 <FaRegThumbsDown className="text-lg" />
-              </div>
+              </div> */}
             </div>
           </div>
         )}
       </div>
       {/* 按鈕群組 */}
-      <div className="absolute -bottom-4 left-4 flex justify-end space-x-2">
+      {/* <div className="absolute -bottom-4 left-4 flex justify-end space-x-2">
         <ChatBubbleButton text={"Copy Text"} icon={<FaRegCopy />} />
         <ChatBubbleButton
           text={"Regenerated Response"}
@@ -55,7 +64,7 @@ const ChatBubble = forwardRef(({ message, isUser, timestamp }, ref) => {
         />
         <ChatBubbleButton text={"Copy Link"} icon={<IoMdLink />} />
         <ChatBubbleButton text={"Share"} icon={<IoShareSocialOutline />} />
-      </div>
+      </div> */}
     </div>
   );
 });
