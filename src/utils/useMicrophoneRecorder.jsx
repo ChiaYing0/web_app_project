@@ -1,8 +1,7 @@
 import { useRef, useState } from "react";
 
-const useMicrophoneRecorder = () => {
+const useMicrophoneRecorder = (onSendAudio) => {
   const mediaRecorderRef = useRef(null);
-  const [audioURL, setAudioURL] = useState("");
   const [isRecording, setIsRecording] = useState(false);
 
   const startRecording = async () => {
@@ -19,8 +18,7 @@ const useMicrophoneRecorder = () => {
 
       mediaRecorderRef.current.onstop = () => {
         const audioBlob = new Blob(audioChunks, { type: "audio/mp3" });
-        const audioURL = URL.createObjectURL(audioBlob);
-        setAudioURL(audioURL);
+        onSendAudio(audioBlob);
       };
 
       mediaRecorderRef.current.start();
@@ -39,7 +37,6 @@ const useMicrophoneRecorder = () => {
 
   return {
     isRecording,
-    audioURL,
     startRecording,
     stopRecording,
   };
